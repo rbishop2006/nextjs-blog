@@ -4,11 +4,12 @@ import styles from './layout.module.css'
 import utilStyles from '../styles/utils.module.css'
 import Link from 'next/link'
 import React from 'react'
+import exp from "constants";
 
 const name = `Rob`
 export const siteTitle = 'Next.js Sample Website'
 
-export default function Layout({ children, home }: LayoutProps ) {
+const Layout = ({ children, home }: LayoutProps ) => {
     return (
         <div className={styles.container}>
             <Head>
@@ -72,6 +73,8 @@ export default function Layout({ children, home }: LayoutProps ) {
         </div>
     )
 }
+
+export default Layout
 
 interface LayoutProps {
     children: React.ReactNode,

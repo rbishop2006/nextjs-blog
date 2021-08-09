@@ -6,7 +6,7 @@ import utilStyles from "../../styles/utils.module.css"
 import {GetStaticProps, GetStaticPaths} from "next";
 
 export const getStaticProps: GetStaticProps = async ({ params}) => {
-    const postData = await getPostData(params.id as string)
+    const postData = await getPostData(params?.id as string)
     return {
         props: {
             postData
@@ -23,8 +23,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
 }
 
 
-export default function Post({ postData }: PostDataProps
-) {
+const Post =({ postData }: PostDataProps
+) => {
     return (
         <Layout>
             <Head>
@@ -41,6 +41,8 @@ export default function Post({ postData }: PostDataProps
     )
 
 }
+
+export default Post
 
 interface PostDataProps {
     postData: {

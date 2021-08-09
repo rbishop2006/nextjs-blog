@@ -15,7 +15,7 @@ export const getStaticProps: GetStaticProps = async () => {
     }
 }
 
-export default function Home({ allPostsData }:HomeProps) {
+const Home = ({ allPostsData }:HomeProps) => {
 
   return (
       <Layout home>
@@ -49,6 +49,8 @@ export default function Home({ allPostsData }:HomeProps) {
       </Layout>
   )
 }
+
+export default Home
 
 interface HomeProps {
     allPostsData: {date: string, title: string, id: string}[]
