@@ -10,6 +10,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
     }
 }
 
+
 const UserList = ({ users }:UserProps) => {
     console.log(users)
     return (
@@ -17,9 +18,9 @@ const UserList = ({ users }:UserProps) => {
             <Head>
                 <title>User List</title>
             </Head>
-                <ul>
+                <ul className={"mt-8 divide-y divide-blue-300"}>
                     {users.map((user) => (
-                        <li key={user.id}>
+                        <li key={user.id} className={"pt-4 pb-4"}>
                             <p>
                                 <strong>User: {user.name}</strong>
                                 <br/>

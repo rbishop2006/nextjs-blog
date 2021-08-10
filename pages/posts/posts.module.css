@@ -1,0 +1,11 @@
+.innerHTML ul {
+    @apply mt-4 mb-4
+}
+
+.innerHTML ul li {
+    @apply mt-2
+}
+
+.innerHTML p {
+    @apply mt-4
+}

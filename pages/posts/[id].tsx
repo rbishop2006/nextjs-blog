@@ -3,6 +3,7 @@ import Layout from "../../components/layout";
 import {getAllPostIds, getPostData} from '../../lib/posts'
 import Date from "../../components/date";
 import {GetStaticProps, GetStaticPaths} from "next";
+import styles from "./posts.module.css"
 
 export const getStaticProps: GetStaticProps = async ({ params}) => {
     const postData = await getPostData(params?.id as string)
@@ -25,18 +26,18 @@ export const getStaticPaths: GetStaticPaths = async () => {
 const Post =({ postData }: PostDataProps
 ) => {
     return (
-        <Layout>
-            <Head>
-                <title>{postData.title}</title>
-            </Head>
-            <article>
-                <h1 >{postData.title}</h1>
-                <div >
-                    <Date dateString={postData.date}/>
-                </div>
-                <div dangerouslySetInnerHTML={{__html: postData.contentHtml}}/>
-            </article>
-        </Layout>
+            <Layout>
+                <Head>
+                    <title>{postData.title}</title>
+                </Head>
+                <article className={"mt-8"}>
+                    <h1>{postData.title}</h1>
+                    <div className={"mt-2"}>
+                        <Date dateString={postData.date}/>
+                    </div>
+                    <div className={styles.innerHTML} dangerouslySetInnerHTML={{__html: postData.contentHtml}}/>
+                </article>
+            </Layout>
     )
 
 }
