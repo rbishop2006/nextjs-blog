@@ -3,7 +3,8 @@ import Layout from "../../components/layout";
 import Head from "next/head";
 
 export const getServerSideProps: GetServerSideProps = async () => {
-    const res = await fetch('https://jsonplaceholder.typicode.com/users')
+    const localHost = 'http://localhost:3000'
+    const res = await fetch(`${localHost}/api/users`)
     const users = await res.json()
     return {
         props: { users }
@@ -12,7 +13,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
 
 const UserList = ({ users }:UserProps) => {
-    console.log(users)
+
     return (
         <Layout>
             <Head>

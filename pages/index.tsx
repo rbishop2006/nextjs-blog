@@ -14,10 +14,6 @@ export const getStaticProps: GetStaticProps = async () => {
     }
 }
 
-const styles = {
-    wrapper: "@apply max-w-md mx-auto pt-8"
-}
-
 const Home = ({ allPostsData }:HomeProps) => {
 
   return (
@@ -56,11 +52,10 @@ const Home = ({ allPostsData }:HomeProps) => {
                           <a>List of Users from Sever-side Rendering</a>
                       </Link>
                   <br/>
-                      <small>using external API call to <a target={"_blank"} rel="noreferrer" href="https://jsonplaceholder.typicode.com/">jsonplaceholder.typicode.com</a></small>
+                      <small>using custom API route api/users </small>
                   </div>
               </section>
           </Layout>
-
       </div>
 
   )
