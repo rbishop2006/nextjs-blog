@@ -44,7 +44,14 @@ const Home = ({ allPostsData }:HomeProps) => {
                       </li>
                   ))}
               </ul>
-
+          </section>
+          <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
+              <h2 className={utilStyles.headingLg}>User List</h2>
+              <Link href={`/users/UserList`}>
+                  <a>List of Users from Sever-side Rendering</a>
+              </Link>
+              <br/>
+              <small>using external API call to <a target={"_blank"} href="https://jsonplaceholder.typicode.com/">jsonplaceholder.typicode.com</a></small>
           </section>
       </Layout>
   )
