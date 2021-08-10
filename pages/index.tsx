@@ -22,7 +22,7 @@ const Home = ({ allPostsData }:HomeProps) => {
           <title>{siteTitle}</title>
         </Head>
         <section>
-          <p>Hello, I'm Rob.  I'm a developer going through the get started tutorial for Next.js</p>
+          <p>Hello, I&apos;m Rob.  I&apos;m a developer going through the get started tutorial for Next.js</p>
           <p>
             (This is a sample website - you’ll be building a site like this on{' '}
             <a href="https://nextjs.org/learn">our Next.js tutorial</a>.)
@@ -50,7 +50,7 @@ const Home = ({ allPostsData }:HomeProps) => {
                   <a>List of Users from Sever-side Rendering</a>
               </Link>
               <br/>
-              <small>using external API call to <a target={"_blank"} href="https://jsonplaceholder.typicode.com/">jsonplaceholder.typicode.com</a></small>
+              <small>using external API call to <a target={"_blank"} rel="noreferrer" href="https://jsonplaceholder.typicode.com/">jsonplaceholder.typicode.com</a></small>
           </section>
       </Layout>
   )
