@@ -2,6 +2,7 @@ import {GetServerSideProps} from "next";
 import Layout from "../../components/layout";
 import Head from "next/head";
 import Link from 'next/link';
+import React from "react";
 
 export const getServerSideProps: GetServerSideProps = async () => {
     const localHost = 'http://localhost:3000'
@@ -36,6 +37,11 @@ const UserList = ({ users }:UserProps) => {
                         </li>
                     ))}
                 </ul>
+            <div className={"text-center"}>
+                <Link href="/users/AddUser">
+                    <a className={"btn-purple mt-8"}>Add new user →</a>
+                </Link>
+            </div>
         </Layout>
     )
 }

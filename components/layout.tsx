@@ -6,8 +6,6 @@ import React from 'react'
 const name = `Rob`
 export const siteTitle = 'Next.js Sample Website'
 
-
-
 const Layout = ({ children, home }: LayoutProps ) => {
     return (
         <>
