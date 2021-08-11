@@ -1,10 +1,11 @@
 import {GetServerSideProps} from "next";
 import Layout from "../../components/layout";
 import Head from "next/head";
+import Link from 'next/link';
 
 export const getServerSideProps: GetServerSideProps = async () => {
     const localHost = 'http://localhost:3000'
-    const res = await fetch(`${localHost}/api/users`)
+    const res = await fetch(`${localHost}/api/users/userList`)
     const users = await res.json()
     return {
         props: { users }
@@ -13,7 +14,6 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
 
 const UserList = ({ users }:UserProps) => {
-
     return (
         <Layout>
             <Head>
@@ -22,9 +22,10 @@ const UserList = ({ users }:UserProps) => {
                 <ul className={"mt-8 divide-y divide-blue-300"}>
                     {users.map((user) => (
                         <li key={user.id} className={"pt-4 pb-4"}>
+                         <Link href="/users/[id]" as={`/users/${user.id}`}>
+                             <a ><strong>{user.name}</strong> </a>
+                         </Link>
                             <p>
-                                <strong>User: {user.name}</strong>
-                                <br/>
                                 <small>Company: {user.company.name}</small>
                                 <br/>
                                 <small>Email: {user.email}</small>
@@ -61,7 +62,7 @@ interface Company {
     bs:          string;
 }
 
-interface User {
+export interface User {
     id:       number;
     name:     string;
     username: string;
