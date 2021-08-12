@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse} from "next";
 import fs from 'fs'
-import { User } from "../../users/UserList";
+import { User } from "../../users/UserList"
 
 const addUserHandler = (req:NextApiRequest, res: NextApiResponse) => {
     if (req.method !== 'POST') {
@@ -13,30 +13,30 @@ const addUserHandler = (req:NextApiRequest, res: NextApiResponse) => {
     const newUser:User = {
         id: Date.now(),
         name,
-        username: 'test username',
         email,
         address: {
-            street: "test street",
-            suite: "test suite",
             city,
-            zipcode: "92998-3874",
-            geo: {
-                lat: "-37.3159",
-                lng: "81.1496"
-                }
-            },
+        },
         phone,
         website,
         company: {
-        name: company,
-         catchPhrase: "Multi-layered client-server neural-net",
-         bs: "harness real-time e-markets"
+            name: company,
         }
     }
 
-    const userArr = JSON.parse(fs.readFileSync('users.json', 'utf8'))
-    userArr.push(newUser)
-    res.status(201).json(newUser)
+    fs.readFile('users.json', 'utf8', function readFileCallback(err, users){
+        let userArr = []
+        if (err){
+            console.log(err)
+        } else {
+            userArr = JSON.parse(users)
+            userArr.push(newUser)
+            const userArrJSON = JSON.stringify(userArr)
+            const noop = () => {}
+            fs.writeFile('users.json', userArrJSON, 'utf8', noop);
+        }});
+    res.status(201).send(newUser)
 }
 
 export default addUserHandler
+

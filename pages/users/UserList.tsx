@@ -50,11 +50,11 @@ const UserList = ({ users }:UserProps) => {
 export default UserList
 
 interface Address {
-    street:  string;
-    suite:   string;
+    street?:  string;
+    suite?:   string;
     city:    string;
-    zipcode: string;
-    geo:     Geo;
+    zipcode?: string;
+    geo?:     Geo;
 }
 
 interface Geo {
@@ -64,14 +64,14 @@ interface Geo {
 
 interface Company {
     name:        string;
-    catchPhrase: string;
-    bs:          string;
+    catchPhrase?: string;
+    bs?:          string;
 }
 
 export interface User {
     id:       number;
     name:     string;
-    username: string;
+    username?: string;
     email:    string;
     address:  Address;
     phone:    string;
