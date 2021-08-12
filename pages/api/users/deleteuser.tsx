@@ -8,16 +8,16 @@ const deleteUserHandler = (req:NextApiRequest, res: NextApiResponse) => {
         return
     }
     const { userId } = req.body
-    let userArr = []
+
     fs.readFile('users.json', 'utf8', function readFileCallback(err, users){
         if (err){
             console.log(err)
         } else {
-            userArr = JSON.parse(users)
-            userArr = userArr.filter((u: User) => u.id !== parseInt(userId))
-            const userArrJSON = JSON.stringify(userArr)
+            const userArr = JSON.parse(users)
+            const filteredUserArr = userArr.filter((u: User) => u.id !== parseInt(userId))
+            const filteredUserArrJSON = JSON.stringify(filteredUserArr)
             const noop = () => {}
-            fs.writeFile('users.json', userArrJSON, 'utf8', noop);
+            fs.writeFile('users.json', filteredUserArrJSON, 'utf8', noop);
 
         }});
         res.status(201).send(`The user with id:${userId} has been removed from the user list`)
