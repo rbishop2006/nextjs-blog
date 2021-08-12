@@ -24,11 +24,8 @@ const Layout = ({ children, home }: LayoutProps ) => {
                 <meta name="og:title" content={siteTitle} />
                 <meta name="twitter:card" content="summary_large_image" />
             </Head>
-            <div className={"sm:max-w-sm pl-4 pr-4 md:max-w-lg mx-auto pt-8 pb-8"}>
+            <div className={" pl-4 pr-4 sm:max-w-sm md:max-w-md mx-auto pt-8 pb-8"}>
             <header>
-
-
-
                 {home ? (
                     <div className="text-center">
                             <Image

@@ -25,11 +25,10 @@ const addUserHandler = (req:NextApiRequest, res: NextApiResponse) => {
     }
 
     fs.readFile('users.json', 'utf8', function readFileCallback(err, users){
-        let userArr = []
         if (err){
             console.log(err)
         } else {
-            userArr = JSON.parse(users)
+            const userArr = JSON.parse(users)
             userArr.push(newUser)
             const userArrJSON = JSON.stringify(userArr)
             const noop = () => {}

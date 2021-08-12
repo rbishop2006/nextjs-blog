@@ -24,10 +24,6 @@ const Home = ({ allPostsData }:HomeProps) => {
               </Head>
               <section className={"mt-8"}>
                   <p>Hello, I&apos;m Rob.  I&apos;m a developer going through the get started tutorial for Next.js</p>
-                  <p className={"mt-4"}>
-                      (This is a sample website - you’ll be building a site like this on{' '}
-                      <a href="https://nextjs.org/learn">our Next.js tutorial</a>.)
-                  </p>
               </section>
               <section className={"mt-8"}>
                   <h2>Blog</h2>
@@ -52,7 +48,7 @@ const Home = ({ allPostsData }:HomeProps) => {
                           <a>List of Users from Sever-side Rendering</a>
                       </Link>
                   <br/>
-                      <small>using custom API route api/users </small>
+                      <small>using custom API routes with local JSON file</small>
                   </div>
               </section>
           </Layout>

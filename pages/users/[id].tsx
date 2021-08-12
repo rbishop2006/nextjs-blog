@@ -47,24 +47,19 @@ const CurrentUser = () => {
                 <title>{`User ${data.id}`}</title>
             </Head>
             <section className={"flex flex-col items-center"}>
-                <p className={"mt-8"}>
-                    <strong >{data.name}</strong>
-                    <br/>
-                    <small className={"mt-8"}>Company: {data.company.name}</small>
-                    <br/>
-                    <small>Website: {data.website}</small>
-                    <br/>
-                    <small>City: {data.address.city}</small>
-                    <br/>
-                    <small>Email: {data.email}</small>
-                    <br/>
-                    <small>Phone: {data.phone}</small>
-                </p>
+                <div className={"mt-8"}>
+                    <h2><strong>{data.name}</strong></h2>
+                    <p className={"mt-4"}>Company: {data.company.name}</p>
+                    <p>Website: {data.website}</p>
+                    <p>City: {data.address.city}</p>
+                    <p>Email: {data.email}</p>
+                    <p>Phone: {data.phone}</p>
+                </div>
             </section>
             <div className={"text-center flex flex-col items-center justify-center"}>
-                    <button className={"btn-purple mt-8 block"} onClick={(e) => handleDelete(e)}>✗ Delete user</button>
+                    <button className={"btn-red mt-8"} onClick={(e) => handleDelete(e)}>✗ Delete user</button>
                 <Link href="/users/UserList">
-                    <a className={"btn-purple mt-8"}>← Back to Users</a>
+                    <a className={"btn-blue mt-8"}>← Back to Users</a>
                 </Link>
             </div>
         </Layout>

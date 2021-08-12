@@ -20,7 +20,9 @@ const UserList = ({ users }:UserProps) => {
             <Head>
                 <title>User List</title>
             </Head>
-                <ul className={"mt-8 divide-y divide-blue-300"}>
+
+                <h1 className={"text-center mt-8"}>User List</h1>
+                <ul className={"mt-4 divide-y divide-blue-300"}>
                     {users.map((user) => (
                         <li key={user.id} className={"pt-4 pb-4"}>
                          <Link href="/users/[id]" as={`/users/${user.id}`}>
@@ -39,7 +41,7 @@ const UserList = ({ users }:UserProps) => {
                 </ul>
             <div className={"text-center"}>
                 <Link href="/users/AddUser">
-                    <a className={"btn-purple mt-8"}>Add new user →</a>
+                    <a className={"btn-green mt-8"}>Add new user →</a>
                 </Link>
             </div>
         </Layout>

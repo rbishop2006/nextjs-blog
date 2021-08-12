@@ -40,14 +40,14 @@ const AddUser = () => {
                     !newUser
                     ? <section>
                         <h2 className={"text-center"}>New User Info</h2>
-                        <form onSubmit={handleSubmit} className={"flex flex-col"}>
+                        <form onSubmit={handleSubmit} className={"flex flex-col justify-center items-center"}>
                             <input placeholder={"Name:"} className={styles.newUserInputs} type="text" value={name} onChange={e => setName(e.target.value)}/>
                             <input placeholder={"Company:"} className={styles.newUserInputs} type="text" value={company} onChange={e => setCompany(e.target.value)}/>
                             <input placeholder={"Website:"} className={styles.newUserInputs} type="text" value={website} onChange={e => setWebsite(e.target.value)}/>
                             <input placeholder={"City:"} className={styles.newUserInputs} type="text" value={city} onChange={e => setCity(e.target.value)}/>
                             <input placeholder={"Email:"} className={styles.newUserInputs} type="email" value={email} onChange={e => setEmail(e.target.value)}/>
                             <input placeholder={"Phone:"} className={styles.newUserInputs} type="number" value={phone} onChange={e => setPhone(e.target.value)}/>
-                            <input className={"mt-4 py-2 px-4 rounded w-2/5 m-auto  hover:text-white hover:bg-indigo-200 font-bold text-gray-600"} type="submit" value="Add user" />
+                            <input className={"mt-4 btn-green"} type="submit" value="+ Add user" />
                         </form>
                     </section>
                     :  <section className={"flex flex-col items-center"}>
@@ -64,7 +64,7 @@ const AddUser = () => {
 
                 <div className={"text-center"}>
                     <Link href="/users/UserList">
-                        <a className={"btn-purple mt-8"}>← Back to Users</a>
+                        <a className={"btn-blue mt-8"}>← Back to Users</a>
                     </Link>
                 </div>
             </Layout>
