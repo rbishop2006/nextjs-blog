@@ -9,36 +9,36 @@ export const getServerSideProps: GetServerSideProps = async () => {
     const res = await fetch(`${localHost}/api/users/userList`)
     const users = await res.json()
     return {
-        props: { users }
+        props: {users}
     }
 }
 
 
-const UserList = ({ users }:UserProps) => {
+const UserList = ({users}: UserProps) => {
     return (
         <Layout>
             <Head>
                 <title>User List</title>
             </Head>
 
-                <h1 className={"text-center mt-8"}>User List</h1>
-                <ul className={"mt-4 divide-y divide-blue-300"}>
-                    {users.map((user) => (
-                        <li key={user.id} className={"pt-4 pb-4"}>
-                         <Link href="/users/[id]" as={`/users/${user.id}`}>
-                             <a ><strong>{user.name}</strong> </a>
-                         </Link>
-                            <p>
-                                <small>Company: {user.company.name}</small>
-                                <br/>
-                                <small>Email: {user.email}</small>
-                                <br/>
-                                <small>Phone: {user.phone}</small>
-                            </p>
+            <h2 className={"text-center mt-8"}>User List</h2>
+            <ul className={"mt-4 divide-y divide-blue-300"}>
+                {users.map((user) => (
+                    <li key={user.id} className={"pt-4 pb-4"}>
+                        <Link href="/users/[id]" as={`/users/${user.id}`}>
+                            <a><strong>{user.name}</strong> </a>
+                        </Link>
+                        <p>
+                            <small>Company: {user.company.name}</small>
+                            <br/>
+                            <small>Email: {user.email}</small>
+                            <br/>
+                            <small>Phone: {user.phone}</small>
+                        </p>
 
-                        </li>
-                    ))}
-                </ul>
+                    </li>
+                ))}
+            </ul>
             <div className={"text-center"}>
                 <Link href="/users/AddUser">
                     <a className={"btn-green mt-8"}>Add new user →</a>
@@ -52,11 +52,11 @@ const UserList = ({ users }:UserProps) => {
 export default UserList
 
 interface Address {
-    street?:  string;
-    suite?:   string;
-    city:    string;
+    street?: string;
+    suite?: string;
+    city: string;
     zipcode?: string;
-    geo?:     Geo;
+    geo?: Geo;
 }
 
 interface Geo {
@@ -65,24 +65,24 @@ interface Geo {
 }
 
 interface Company {
-    name:        string;
+    name: string;
     catchPhrase?: string;
-    bs?:          string;
+    bs?: string;
 }
 
 export interface User {
-    id:       number;
-    name:     string;
+    id: number;
+    name: string;
     username?: string;
-    email:    string;
-    address:  Address;
-    phone:    string;
-    website:  string;
-    company:  Company;
+    email: string;
+    address: Address;
+    phone: string;
+    website: string;
+    company: Company;
 }
 
 export interface UserProps {
-    users : User[]
+    users: User[]
 }
 
 
