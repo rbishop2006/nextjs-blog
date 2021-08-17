@@ -1,64 +1,63 @@
 import Head from 'next/head'
 import Link from 'next/link'
-import Layout, { siteTitle } from '../components/layout'
-import { getSortedPostsData } from '../lib/posts'
+import Layout, {siteTitle} from '../components/layout'
 import Date from "../components/date";
-import { GetStaticProps } from "next";
+import {GetServerSideProps, GetStaticProps} from "next";
+import React from "react";
 
-export const getStaticProps: GetStaticProps = async () => {
-    const allPostsData = getSortedPostsData()
+
+export const getServerSideProps: GetServerSideProps = async () => {
+
+    const carsResp = await fetch(`http://localhost/api/car`, {
+        headers: {
+            Accept: 'application/json'
+        }
+    })
+
+    const cars: Car[] = await carsResp.json()
+
     return {
         props: {
-            allPostsData
+            cars
         }
     }
 }
 
-const Home = ({ allPostsData }:HomeProps) => {
+const Home: React.FC<HomeProps> = ({cars}) => {
 
-  return (
-      <div>
-          <Layout home>
-              <Head>
-                  <title>{siteTitle}</title>
-              </Head>
-              <section className={"mt-8"}>
-                  <p>Hello, I&apos;m Rob.  I&apos;m a developer going through the get started tutorial for Next.js</p>
-              </section>
-              <section className={"mt-8"}>
-                  <h2>Blog</h2>
-                  <ul className={"mt-4"}>
-                      {allPostsData.map(({id, date, title}) => (
-                          <li key={id} className={"mt-4"}>
-                              <Link href={`/posts/${id}`}>
-                                  <a>{title}</a>
-                              </Link>
-                              <br />
-                              <small>
-                                  <Date dateString={date} />
-                              </small>
-                          </li>
-                      ))}
-                  </ul>
-              </section>
-              <section className={"mt-8"}>
-                  <h2>User List</h2>
-                  <div className={"mt-4"}>
-                      <Link href={`/users/UserList`}>
-                          <a>List of Users from Sever-side Rendering</a>
-                      </Link>
-                  <br/>
-                      <small>using custom API routes with local JSON file</small>
-                  </div>
-              </section>
-          </Layout>
-      </div>
+    return (
+        <div>
+            <Layout home>
+                <Head>
+                    <title>{siteTitle}</title>
+                </Head>
+                <section className={"mt-8"}>
+                    <p>Hello, I&apos;m Rob. I&apos;m practicing Next.js with Laravel.</p>
+                </section>
+                <section className={"mt-8"}>
+                    <h2>Cars</h2>
+                    <ul className="mt-4">
+                        {cars.map(({id, name, created_at}) => (
+                            <li key={id} className="mt-4">
+                                <Link href={`/posts/${id}`}>
+                                    <a>{name}</a>
+                                </Link>
+                                <br/>
+                                <small>
+                                    created: <Date dateString={created_at}/>
+                                </small>
+                            </li>
+                        ))}
+                    </ul>
+                </section>
+            </Layout>
+        </div>
 
-  )
+    )
 }
 
 export default Home
 
 interface HomeProps {
-    allPostsData: {date: string, title: string, id: string}[]
+    cars: Car[]
 }

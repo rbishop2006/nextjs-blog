@@ -4,7 +4,7 @@ import Link from 'next/link'
 import React from 'react'
 
 const name = `Rob`
-export const siteTitle = 'Next.js Sample Website'
+export const siteTitle = 'Next.js + Laravel Practice'
 
 const Layout = ({children, home}: LayoutProps) => {
     return (
@@ -13,7 +13,7 @@ const Layout = ({children, home}: LayoutProps) => {
                 <link rel="icon" href="/favicon.ico"/>
                 <meta
                     name="description"
-                    content="Learn how to build a personal website using Next.js"
+                    content="Practice for Next.js with Laravel"
                 />
                 <meta
                     property="og:image"
@@ -38,7 +38,7 @@ const Layout = ({children, home}: LayoutProps) => {
                                     width={144}
                                     alt={name}
                                 />
-                                <h1 className={"text-3xl font-extrabold mt-4 mb-8"}>{name}</h1>
+                                <h1 className={"text-3xl font-extrabold mt-4 mb-8"}>Cars App</h1>
                             </div>
                         ) : (
                             <div className="text-center">
@@ -56,7 +56,7 @@ const Layout = ({children, home}: LayoutProps) => {
                                 </Link>
                                 <h1 className={"mt-4 mb-8"}>
                                     <Link href="/">
-                                        <a className={"text-black"}>{name}</a>
+                                        <a className={"text-black"}>Cars Home</a>
                                     </Link>
                                 </h1>
                             </div>
