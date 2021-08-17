@@ -2,9 +2,9 @@ import Head from 'next/head'
 import Link from 'next/link'
 import Layout, {siteTitle} from '../components/layout'
 import Date from "../components/date";
-import {GetServerSideProps, GetStaticProps} from "next";
-import React from "react";
-
+import {GetServerSideProps} from "next";
+import React, {useEffect} from "react";
+import {useRouter} from "next/router";
 
 export const getServerSideProps: GetServerSideProps = async () => {
 
@@ -24,6 +24,13 @@ export const getServerSideProps: GetServerSideProps = async () => {
 }
 
 const Home: React.FC<HomeProps> = ({cars}) => {
+    const router = useRouter()
+
+    useEffect(() => {
+        //data was not refreshing when pushing from other pages
+        // there may be a better solution
+        router.replace(router.asPath)
+    }, [])
 
     return (
         <div>
@@ -37,9 +44,9 @@ const Home: React.FC<HomeProps> = ({cars}) => {
                 <section className={"mt-8"}>
                     <h2>Cars</h2>
                     <ul className="mt-4">
-                        {cars.map(({id, name, created_at}) => (
+                        {cars && cars.map(({id, name, created_at}) => (
                             <li key={id} className="mt-4">
-                                <Link href={`/posts/${id}`}>
+                                <Link href={`/car/${id}`}>
                                     <a>{name}</a>
                                 </Link>
                                 <br/>
