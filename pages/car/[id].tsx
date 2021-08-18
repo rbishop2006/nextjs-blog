@@ -32,7 +32,7 @@ const Car: React.FC = () => {
         return () => {
             isFetching.current = false
         }
-    }, [isEditing])
+    }, [isEditing, id])
 
     const handleDelete = async () => {
         const res = await fetch(`http://localhost/api/car/${id}`, {
@@ -42,7 +42,7 @@ const Car: React.FC = () => {
             method: "DELETE"
         })
         if (res.ok) {
-            router.push('/')
+            await router.push('/')
             setCar('')
         }
     }
