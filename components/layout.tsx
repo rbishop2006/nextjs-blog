@@ -32,7 +32,7 @@ const Layout = ({children, home}: LayoutProps) => {
                             <div className="text-center">
                                 <Image
                                     priority
-                                    src="/images/profile.jpg"
+                                    src="/images/road.jpg"
                                     className="rounded-full"
                                     height={144}
                                     width={144}
@@ -46,7 +46,7 @@ const Layout = ({children, home}: LayoutProps) => {
                                     <a>
                                         <Image
                                             priority
-                                            src="/images/profile.jpg"
+                                            src="/images/road.jpg"
                                             className="rounded-full"
                                             height={144}
                                             width={144}
@@ -56,7 +56,7 @@ const Layout = ({children, home}: LayoutProps) => {
                                 </Link>
                                 <h1 className={"mt-4 mb-8"}>
                                     <Link href="/">
-                                        <a className={"text-black"}>Cars Home</a>
+                                        <a className={"text-black"}>Cars App</a>
                                     </Link>
                                 </h1>
                             </div>

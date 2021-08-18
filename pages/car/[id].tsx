@@ -1,11 +1,15 @@
 import React, {useEffect, useState, useRef} from 'react'
 import {useRouter} from "next/router";
+import Layout from "../../components/layout";
+import Head from "next/head";
 
 const Car: React.FC = () => {
     const [car, setCar] = useState<Car | ''>('')
+    const [isEditing, setIsEditing] = useState<boolean>(false)
+    const [name, setName] = useState<string>('')
+    const isFetching = useRef<boolean>(false)
     const router = useRouter()
     const {id} = router.query
-    const isFetching = useRef<boolean>(false)
 
     useEffect(() => {
         isFetching.current = true
@@ -27,32 +31,65 @@ const Car: React.FC = () => {
         return () => {
             isFetching.current = false
         }
-    }, [])
+    }, [isEditing])
 
     const handleDelete = async () => {
-        if (car && car.id) {
-            fetch(`http://localhost/api/car/${car.id}`, {
-                headers: {
-                    Accept: 'application/json'
-                },
-                method: "DELETE"
-            })
+        const res = await fetch(`http://localhost/api/car/${id}`, {
+            headers: {
+                Accept: 'application/json'
+            },
+            method: "DELETE"
+        })
+        if (res.ok) {
             router.push('/')
+            setCar('')
+        }
+    }
+
+    const handleEdit = async (e: React.SyntheticEvent) => {
+        e.preventDefault()
+        const res = await fetch(`http://localhost/api/car/${id}`, {
+            headers: {
+                'Content-Type': 'application/json',
+                Accept: 'application/json'
+            },
+            method: "PUT",
+            body: JSON.stringify({
+                name
+            })
+        })
+        if (res.ok) {
+            setIsEditing(false)
+            setName('')
         }
     }
 
     return (
-        <>
+        <Layout>
+            <Head>
+                <title>Car Details</title>
+            </Head>
             {car &&
-            <div>
+            <div className="pt-4">
                 <p>Name: {car.name}</p>
+                {isEditing &&
+                <form onSubmit={handleEdit} className="flex items-center justify-between py-4">
+                    <input className="flex-grow mr-4 py-2 pl-2" type="text" placeholder="enter new name" value={name}
+                           onChange={e => setName(e.target.value)}/>
+                    <button className="btn-green" type="submit" disabled={name.length < 5}>submit</button>
+                </form>
+                }
                 <p>id: {car.id}</p>
                 <p>created: {car.created_at}</p>
                 <p>updated: {car.updated_at}</p>
-                <button onClick={handleDelete}>delete</button>
+                <div className="flex items-center justify-between pt-4">
+                    <button className="btn-yellow" onClick={() => setIsEditing(prevState => !prevState)}>edit</button>
+                    <button className="btn-red" onClick={handleDelete}>delete</button>
+                </div>
+
             </div>
             }
-        </>
+        </Layout>
 
     )
 }

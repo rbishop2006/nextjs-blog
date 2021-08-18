@@ -38,11 +38,16 @@ const Home: React.FC<HomeProps> = ({cars}) => {
                 <Head>
                     <title>{siteTitle}</title>
                 </Head>
-                <section className={"mt-8"}>
+                <section className={"mt-8 text-center"}>
                     <p>Hello, I&apos;m Rob. I&apos;m practicing Next.js with Laravel.</p>
                 </section>
                 <section className={"mt-8"}>
-                    <h2>Cars</h2>
+                    <div className="flex items-center justify-between">
+                        <h2>Cars</h2>
+                        <Link href="http://localhost:3000/car/addcar">
+                            <a className="btn-green text-center">add car</a>
+                        </Link>
+                    </div>
                     <ul className="mt-4">
                         {cars && cars.map(({id, name, created_at}) => (
                             <li key={id} className="mt-4">
