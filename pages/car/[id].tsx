@@ -2,6 +2,7 @@ import React, {useEffect, useState, useRef} from 'react'
 import {useRouter} from "next/router";
 import Layout from "../../components/layout";
 import Head from "next/head";
+import Date from "../../components/date";
 
 const Car: React.FC = () => {
     const [car, setCar] = useState<Car | ''>('')
@@ -79,9 +80,16 @@ const Car: React.FC = () => {
                     <button className="btn-green" type="submit" disabled={name.length < 5}>submit</button>
                 </form>
                 }
-                <p>id: {car.id}</p>
-                <p>created: {car.created_at}</p>
-                <p>updated: {car.updated_at}</p>
+                <p>
+                    <small>
+                        created: <Date dateString={car.created_at}/>
+                    </small>
+                </p>
+                <p>
+                    <small>
+                        updated: <Date dateString={car.updated_at}/>
+                    </small>
+                </p>
                 <div className="flex items-center justify-between pt-4">
                     <button className="btn-yellow" onClick={() => setIsEditing(prevState => !prevState)}>edit</button>
                     <button className="btn-red" onClick={handleDelete}>delete</button>
